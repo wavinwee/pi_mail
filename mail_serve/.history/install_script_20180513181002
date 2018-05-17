@@ -1,7 +1,0 @@
-WHERE install_script is
-#!/usr/bin/expect
-set timeout 2
-spawn "./your_script"
-expect “General type of mail configuration:” { send “yes\n” }
-expect “Question 2 :” { send “yes\n” }
-interact

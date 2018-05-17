@@ -1,8 +1,0 @@
-#!/usr/bin/expect
-echo apt-get update
-set timeout 2
-spawn apt-get install postfix
-expect “General type of mail configuration:” { send "2\n” }
-expect “System mail name:” { send “testing-domain.grrr\n” }
-interact
-expect eof

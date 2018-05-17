@@ -1,8 +1,0 @@
-#!/usr/bin/expect
-set timeout 10
-spawn echo $test
-# spawn echo "GOOD KUSHHHHHHHH"
-expect “General type of mail configuration:” { send "2\n” }
-expect “System mail name:” { send “testing-domain.grrr\n” }
-interact
-expect eof
