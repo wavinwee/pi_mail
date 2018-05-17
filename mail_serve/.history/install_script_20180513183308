@@ -1,0 +1,7 @@
+where /etc/postfix/install_script is
+#!/usr/bin/expect
+set timeout 2
+spawn "apt-get install postfix"
+expect “General type of mail configuration:” { send "2\n” }
+expect “System mail name:” { send “testing-domain.grrr\n” }
+interact

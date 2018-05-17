@@ -1,0 +1,7 @@
+FROM resin/rpi-raspbian
+
+RUN apt-get update && apt-get install expect
+COPY install_script /etc/postfix/install_script
+RUN set -v && /etc/postfix/install_script
+EXPOSE 25
+CMD postfix start && tail -f /dev/null

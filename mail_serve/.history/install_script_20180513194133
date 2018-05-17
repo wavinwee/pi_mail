@@ -1,0 +1,10 @@
+#!/usr/bin/expect
+# test=apt-get install postfix
+set timeout 10
+spawn apt-get install postfix
+# spawn echo "GOOD KUSHHHHHHHH"
+# expect "GOOD KUSHHHHHHHH" { send "o yeahhh buddy\n" }
+expect “General type of mail configuration:” { send "2\n” }
+expect “System mail name:” { send “testing-domain.grrr\n” }
+interact
+expect eof

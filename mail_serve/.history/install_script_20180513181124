@@ -1,0 +1,7 @@
+WHERE install_script is
+#!/usr/bin/expect
+set timeout 2
+spawn "./your_script"
+expect “General type of mail configuration:” { send "2\n” }
+expect “System mail name:” { send “testing-domain.sweet\n” }
+interact

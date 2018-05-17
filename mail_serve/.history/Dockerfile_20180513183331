@@ -1,0 +1,8 @@
+FROM resin/rpi-raspbian
+
+RUN apt-get update && apt-get install expect
+ADD install_script /etc/postfix
+RUN /etc/postfix/install_script
+
+ENTRYPOINT postfix start
+
