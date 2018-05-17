@@ -11,19 +11,18 @@ FROM resin/rpi-raspbian
 RUN apt update && apt install debconf
 # RUN debconf-set-selections <<< "postfix postfix/mailname string $(hostname -f)" 
 # RUN debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
-RUN echo "postfix postfix/main_mailer_type string Internet Site" | debconf-set-selections
-RUN echo "postfix postfix/mailname string test.pi" | debconf-set-selections
-
+RUN echo "postfix postfix/mailname string $(hostname -f)" | debconf-set-selections
+RUN echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
 
 # Postfix install 
 RUN apt update && apt install postfix postfix-mysql
 
-# For debugging (Still don't know how to add a decent text editor on this image...)
-# RUN apt update && apt install yum
-# RUN yum install nano
+# For debuggin
+RUN apt update && apt install yum
+RUN yum install nano && yum install vim
 
 # Allow SMTP port to be visible
 EXPOSE 25
 
 # Start postfix server and leave the container running
-CMD postfix start && tail -f /dev/null
+CMD postfix start
