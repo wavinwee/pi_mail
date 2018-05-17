@@ -11,8 +11,8 @@ FROM resin/rpi-raspbian
 RUN apt update && apt install debconf
 # RUN debconf-set-selections <<< "postfix postfix/mailname string $(hostname -f)" 
 # RUN debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
-RUN echo "postfix postfix/main_mailer_type string Internet Site" | debconf-set-selections
-RUN echo "postfix postfix/mailname string test.pi" | debconf-set-selections
+RUN echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
+RUN echo "postfix postfix/mailname string 'test.pi'" | debconf-set-selections
 
 
 # Postfix install 
