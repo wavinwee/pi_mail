@@ -22,8 +22,8 @@ RUN apt update && apt install postfix postfix-mysql
 # RUN apt update && apt install yum
 # RUN yum install nano
 
-# Allow SMTP port to be visible
-EXPOSE 25
-
 # Start postfix server and leave the container running
 CMD postfix start && tail -f /dev/null
+
+# Allow SMTP port to be visible
+EXPOSE 25 587
