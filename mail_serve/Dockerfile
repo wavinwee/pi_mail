@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian
+FROM resin/rpi-raspbian 
 
 # RUN apt-get update && apt-get install expect
 # COPY install_script /etc/postfix/install_script
@@ -16,14 +16,13 @@ RUN echo "postfix postfix/mailname string test.pi" | debconf-set-selections
 
 
 # Postfix install 
-RUN apt update && apt install postfix postfix-mysql
+RUN apt update && apt install -y postfix
 
-# For debugging (Still don't know how to add a decent text editor on this image...)
-# RUN apt update && apt install yum
-# RUN yum install nano
+COPY master.cf /etc/postfix/master.cf
+COPY main.cf /etc/postfix/main.cf
 
 # Start postfix server and leave the container running
 CMD postfix start && tail -f /dev/null
 
 # Allow SMTP port to be visible
-EXPOSE 25 587
+EXPOSE 25

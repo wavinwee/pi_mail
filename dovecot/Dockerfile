@@ -1,4 +1,4 @@
-FROM alpine
+FROM arm32v6/alpine 
 
 RUN apk add --no-cache dovecot \
     && addgroup -S -g 5000 vmail \
@@ -9,7 +9,6 @@ RUN apk add --no-cache dovecot \
 
 COPY dovecot.conf /etc/dovecot/
 COPY users /etc/dovecot/
-# LMTP config 
 
-EXPOSE 24 143 12345 
+EXPOSE 143 
 CMD ["/usr/sbin/dovecot","-F","-c","/etc/dovecot/dovecot.conf"]
