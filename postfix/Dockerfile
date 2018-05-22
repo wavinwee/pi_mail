@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian 
+FROM arm32v7/debian:stretch-slim 
 
 # RUN apt-get update && apt-get install expect
 # COPY install_script /etc/postfix/install_script
