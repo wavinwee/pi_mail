@@ -1,3 +1,11 @@
+# Install Docker (Raspbian Stretch)
+The easiest method of installing Docker on a Raspberry Pi running Raspbian, is to execute a scripted install from the Docker website. 
+
+1. `curl -sSL get.docker.com | sh` to install Docker
+2. `sudo usermod -aG docker pi` to allow the pi user to manage Docker
+3. `echo gpu_mem=16 >> /boot/config.txt` to decrease memory reserved for graphics operations (Optional step to improve performance)
+
+# Launch and configure mail services
 In its current state, this repository provides a minimally functional ARM-based mail environment based on separate postfix (SMTP), dovecot (IMAP), and rainloop (webmail) containers.
 
 1. Clone or copy the repo to a raspberry pi or other ARM based device.
@@ -17,3 +25,8 @@ In its current state, this repository provides a minimally functional ARM-based 
 - IMAP: `172.18.0.2:25`
 6. Navigate to `http://SERVER/` to access webmail.
 - Test user: `test@test.pi` / `password`
+
+# Restart containers
+At the moment, restarting the device will result in the containers being suspended. You can restart a suspended container by calling `docker start` with the container name. To create a container that restarts itself, call `docker run` with the `--restart always` parameter.
+
+
