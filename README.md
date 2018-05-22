@@ -20,6 +20,7 @@ In its current state, this repository provides a minimally functional ARM-based 
 - `docker run -itd --name postfix --network mail --ip 172.18.0.3 -p 25:25 postfix`
 - `docker run -itd --name rainloop --network mail --ip 172.18.0.4 -p 80:80 rainloop`
 5. In a browser, navigate to `http://SERVER/?admin` to configure the domain:
+- Default admin: `admin` / `12345`
 - Test domain: `test.pi`
 - SMTP: `172.18.0.3:587`
 - IMAP: `172.18.0.2:25`
