@@ -11,9 +11,9 @@ In its current state, this repository provides a minimally functional ARM-based 
 - `docker run -itd --name dovecot --network mail --ip 172.18.0.2 -p 143:143 dovecot`
 - `docker run -itd --name postfix --network mail --ip 172.18.0.3 -p 25:25 postfix`
 - `docker run -itd --name rainloop --network mail --ip 172.18.0.4 -p 80:80 rainloop`
-5. In a browser, navigate to `http://server/?admin` to configure the domain:
+5. In a browser, navigate to `http://SERVER/?admin` to configure the domain:
+- Test domain: `test.pi`
 - SMTP: `172.18.0.3:587`
 - IMAP: `172.18.0.2:25`
-6. Navigate to `http://server/` to access webmail.
-- Test domain: `test.pi`
+6. Navigate to `http://SERVER/` to access webmail.
 - Test user: `test@test.pi` / `password`
