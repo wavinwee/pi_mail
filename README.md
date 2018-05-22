@@ -5,18 +5,15 @@ In its current state, this repository provides a minimally functional ARM-based 
 - `docker build -t postfix .` in `mail/postfix`
 - `docker build -t dovecot .` in `mail/dovecot`
 - `docker build -t rainloop .` in `mail/rainloop`
-3. Create a user-defined container network `docker network create --driver bridge --subnet 172.18.0.0/24 mail`
+3. Create a user-defined container network: 
+- `docker network create --driver bridge --subnet 172.18.0.0/24 mail`
 4. Launch the containers as shown below:
 - `docker run -itd --name dovecot --network mail --ip 172.18.0.2 -p 143:143 dovecot`
 - `docker run -itd --name postfix --network mail --ip 172.18.0.3 -p 25:25 postfix`
 - `docker run -itd --name rainloop --network mail --ip 172.18.0.4 -p 80:80 rainloop`
-
 5. In a browser, navigate to `http://server/?admin` to configure the domain:
-
-SMTP: 172.18.0.3:587
-IMAP: 172.18.0.2:25
-
+- SMTP: 172.18.0.3:587
+- IMAP: 172.18.0.2:25
 6. Navigate to `http://server/` to access webmail.
-
-Test domain: `test.pi`
-Test user: `test@test.pi` / `password`
+- Test domain: `test.pi`
+- Test user: `test@test.pi` / `password`
