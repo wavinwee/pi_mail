@@ -27,6 +27,19 @@ In its current state, this repository provides a minimally functional ARM-based 
 6. Navigate to `http://SERVER/` to access webmail.
 - Test user: `pi@test.pi` / `password`
 
+# Add / remove users
+You can add or remove users by editing the included `users_template` and copying it into the running container at `/etc/dovecot/users`.
+
+- `docker cp LOCAL_FILE CONTAINER_NAME:/etc/dovecot/users`
+
+*CONTAINER__NAME = dovecot if you have followed examples above*
+
+The general format of the user file is one `username:password` pair per line. The username should not include the _@domain_ suffix. The template demonstrates the format of adding a user with a plaintext password. You can leverage the dovecot container image to create a strong password hash:
+
+- `docker run -it --rm IMAGE_NAME doveadm pw -s SHA256-CRYPT`
+
+*IMAGE_NAME = dovecot if you have followed examples above*
+
 # Restart containers
 At the moment, restarting the device will result in the containers being suspended. You can restart a suspended container by calling `docker start` with the container name. To create a container that restarts itself, call `docker run` with the `--restart always` parameter.
 
