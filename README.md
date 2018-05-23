@@ -1,3 +1,5 @@
+_NOTE: The current instructions align best with the most recent version of the containers. I recommend pulling a new version of the repository and building a fresh image. You can remove the current version of the containers using `docker rm -f dovecot postfix rainloop`_
+
 # Install Docker (Raspbian Stretch)
 The easiest method of installing Docker on a Raspberry Pi running Raspbian, is to execute a scripted install from the Docker website. 
 
@@ -40,7 +42,5 @@ The general format of the user file is one `username:password` pair per line. Th
 
 *IMAGE_NAME = dovecot if you have followed examples above*
 
-# Restart containers
+# Restart suspended containers
 At the moment, restarting the device will result in the containers being suspended. You can restart a suspended container by calling `docker start` with the container name. To create a container that restarts itself, call `docker run` with the `--restart always` parameter.
-
-
