@@ -9,7 +9,7 @@ COPY docker-entrypoint.d/* /docker-entrypoint.d/
 #ONBUILD COPY /docker-entrypoint.d/* /docker-entrypoint.d/
 
 # Allow SMTP port to be visible
-EXPOSE 25
+EXPOSE 25 587
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 # Start postfix server and leave the container running
