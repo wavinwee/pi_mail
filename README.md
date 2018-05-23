@@ -14,11 +14,11 @@ In its current state, this repository provides a minimally functional ARM-based 
 - `docker build -t dovecot .` in `mail/dovecot`
 - `docker build -t rainloop .` in `mail/rainloop`
 3. Create a user-defined container network: 
-- `docker network create --driver bridge --opt com.docker.network.bridge.name=docker_mail mail`
+- `docker network create --driver bridge --opt com.docker.network.bridge.name=docker-mail docker-mail`
 4. Launch the containers as shown below:
-- `docker run -itd --name dovecot --network mail -p 143:143 dovecot`
-- `docker run -itd --name postfix --network mail -p 25:25 postfix`
-- `docker run -itd --name rainloop --network mail -p 80:80 rainloop`
+- `docker run -itd --name dovecot --network docker-mail -p 143:143 dovecot`
+- `docker run -itd --name postfix --network docker-mail -p 25:25 postfix`
+- `docker run -itd --name rainloop --network docker-mail -p 80:80 rainloop`
 5. In a browser, navigate to `http://SERVER/?admin` to configure the domain:
 - Default admin: `admin` / `12345`
 - Test domain: `test.pi`
