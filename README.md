@@ -25,7 +25,7 @@ In its current state, this repository provides a minimally functional ARM-based 
 - Default admin: `admin` / `12345`
 - Test domain: `test.pi`
 - SMTP: `postfix.docker-mail:587`
-- IMAP: `dovecot.docker-mail:25`
+- IMAP: `dovecot.docker-mail:143`
 6. Navigate to `http://SERVER/` to access webmail.
 - Test user: `pi@test.pi` / `password`
 
