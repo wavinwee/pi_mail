@@ -1,4 +1,4 @@
-FROM arm32v6/alpine 
+FROM alpine 
 
 RUN apk add --no-cache dovecot \
     && addgroup -S -g 5000 vmail \
@@ -10,5 +10,11 @@ RUN apk add --no-cache dovecot \
 COPY dovecot.conf /etc/dovecot/
 COPY users /etc/dovecot/
 
-EXPOSE 143 
-CMD ["/usr/sbin/dovecot","-F","-c","/etc/dovecot/dovecot.conf"]
+COPY docker-entrypoint.sh /
+COPY docker-entrypoint.d/* /docker-entrypoint.d/
+#ONBUILD COPY /docker-entrypoint.d/* /docker-entrypoint.d/
+
+EXPOSE 143
+ 
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["/usr/sbin/dovecot", "-Fc", "/etc/dovecot/dovecot.conf"]
