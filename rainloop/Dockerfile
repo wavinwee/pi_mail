@@ -1,4 +1,4 @@
-FROM arm32v7/debian:stretch-slim
+FROM debian:stretch-slim
 
 RUN apt update && apt install -y wget apache2 php-common libapache2-mod-php php-cli php-curl php-xml
 RUN cd /var/www && wget -qO- https://repository.rainloop.net/installer.php | php
