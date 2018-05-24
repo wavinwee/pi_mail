@@ -38,9 +38,9 @@ You can add or remove users by editing the included `users_template` and copying
 
 *CONTAINER__NAME = dovecot if you have followed examples above*
 
-The general format of the user file is one `username:password` pair per line. The username should not include the _@domain_ suffix. The template demonstrates the format of adding a user with a plaintext password. You can leverage the dovecot container image to create a strong password hash:
+The general format of the user file is one `username:password` pair per line. The username should not include the _@domain_ suffix. The template demonstrates the format of adding a user with a plaintext password. You can leverage the dovecot container image to create a stronger password hash:
 
-- `docker run -it --rm IMAGE_NAME doveadm pw -s SHA256-CRYPT`
+- `docker run -it --rm IMAGE_NAME doveadm pw -s PBKDF2`
 
 *IMAGE_NAME = dovecot if you have followed examples above*
 
