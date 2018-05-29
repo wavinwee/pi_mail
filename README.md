@@ -31,7 +31,21 @@ In its current state, this repository provides a minimally functional ARM-based 
 6. Navigate to `http://SERVER/` to access webmail.
 - Test user: `pi@test.pi` / `password`
 
-# Add / remove users
+
+# Restart suspended containers
+At the moment, restarting the device will result in the containers being suspended. You can restart a suspended container by calling `docker start` with the container name. To create a container that restarts itself, call `docker run` with the `--restart always` parameter.
+
+# Customize your mail servers
+
+## Change the domain name and hostname 
+
+The postfix container can be customized by passing in a set of environment variables at runtime, for example:
+
+`docker run -d --restart always --name postfix -e "mail_domain=gradebook.pi" -e "smtp_hostname=mail.gradebook.pi" --network docker-mail -p 25:25 postfix`
+
+Rather than serving mail for test.pi, this example will be configured for gradebook.pi. Notice that we also passed a restart flag so that the container will launch itself automatically at boot.
+
+## Add / remove users
 You can add or remove users by editing the included `users_template` and copying it into the running container at `/etc/dovecot/users`.
 
 - `docker cp LOCAL_FILE CONTAINER_NAME:/etc/dovecot/users`
@@ -43,6 +57,3 @@ The general format of the user file is one `username:password` pair per line. Th
 - `docker run -it --rm IMAGE_NAME doveadm pw -s PBKDF2`
 
 *IMAGE_NAME = dovecot if you have followed examples above*
-
-# Restart suspended containers
-At the moment, restarting the device will result in the containers being suspended. You can restart a suspended container by calling `docker start` with the container name. To create a container that restarts itself, call `docker run` with the `--restart always` parameter.
